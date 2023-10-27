@@ -18,6 +18,10 @@
 - html
 - css
 
+## API
+
+- [Flags](https://flagsapi.com/)
+
 ## TODO
 
 - Improve styles
