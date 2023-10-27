@@ -1,6 +1,6 @@
 ## Flags quiz
 
-[Demo](https://cos1715.github.io/Todo-app/)
+[Demo](https://cos1715.github.io/flags-quiz/)
 
 > Description: "Flags quiz" - a program which helps to learn flags.  
 > Currently flags shows flags from Europe
@@ -15,8 +15,8 @@
 ## Tech stack
 
 - javascript
-- html/css
-- scss
+- html
+- css
 
 ## TODO
 
