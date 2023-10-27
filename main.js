@@ -66,7 +66,7 @@ class FlagsQuiz {
   startGame = () => {
     this.buttonsNode.innerHTML = null;
     const randomCountry = this.getRandomCountry();
-    this.imageNode.src = `https://flagsapi.com/${randomCountry.code}/flat/64.png`;
+    this.imageNode.src = `https://flagsapi.com/${randomCountry.code}/shiny/64.png`;
 
     const countryOptions = this.getRandomCountryOptions(randomCountry);
     countryOptions.forEach((country) => {
