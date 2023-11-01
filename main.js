@@ -59,25 +59,26 @@ class FlagsQuiz {
     this.scoreNode = document.getElementById(domIds.score);
     this.imageNode = document.getElementById(domIds.flag);
     this.buttonsNode = document.getElementById(domIds.buttons);
-    console.dir(this.buttonsNode);
   }
-  score = 0;
+  #score = 0;
+  #randomGuessedCountry = null;
 
   startGame = () => {
-    this.buttonsNode.innerHTML = null;
     const randomCountry = this.getRandomCountry();
-    this.imageNode.src = `https://flagsapi.com/${randomCountry.code}/shiny/64.png`;
-
     const countryOptions = this.getRandomCountryOptions(randomCountry);
-    countryOptions.forEach((country) => {
-      const button = document.createElement("button");
-      button.textContent = country.name;
-      button.classList.add("button");
-      button.addEventListener("click", () =>
-        this.checkAnswer(country, randomCountry)
-      );
-      this.buttonsNode.append(button);
-    });
+    this.imageNode.src = `https://flagsapi.com/${randomCountry.code}/shiny/64.png`;
+    this.buttonsNode.innerHTML = null;
+    this.#randomGuessedCountry = randomCountry;
+    countryOptions.forEach(this.createButton);
+  };
+  createButton = (country) => {
+    const button = document.createElement("button");
+    button.textContent = country.name;
+    button.classList.add("button");
+    button.addEventListener("click", () =>
+      this.checkAnswer(country, this.#randomGuessedCountry)
+    );
+    this.buttonsNode.append(button);
   };
   getRandomCountry = () => {
     const randomIndex = Math.floor(Math.random() * this.countries.length);
@@ -89,11 +90,11 @@ class FlagsQuiz {
 
   checkAnswer = (selectedCountry, correctCountry) => {
     if (selectedCountry === correctCountry) {
-      this.score += 100;
+      this.#score += 100;
     } else {
-      this.score -= 50;
+      this.#score -= 50;
     }
-    this.scoreNode.innerText = this.score;
+    this.scoreNode.innerText = this.#score;
 
     this.startGame();
   };
